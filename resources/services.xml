@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file was auto-generated from WSDL -->
+<!-- by the Apache Axis2 version: 1.7.7  Built on : Nov 20, 2017 (11:41:20 GMT) -->
+<serviceGroup>
+    <service name="ArticleService">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="by.zhuk.aipos.service.ArticleServiceMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">by.zhuk.aipos.service.ArticleServiceSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="getArticlesName" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://service.aipos.zhuk.by">
+            <actionMapping>urn:getArticlesName</actionMapping>
+            <outputActionMapping>urn:getArticlesNameResponse</outputActionMapping>
+        </operation>
+        <operation name="getArticle" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://service.aipos.zhuk.by">
+            <actionMapping>urn:getArticle</actionMapping>
+            <outputActionMapping>urn:getArticleResponse</outputActionMapping>
+            <faultActionMapping faultName="ArticleServiceIOException">urn:getArticleArticleServiceIOException</faultActionMapping>
+            <faultActionMapping faultName="ArticleServiceIOException_Exception">urn:getArticleArticleServiceIOException</faultActionMapping>
+        </operation>
+        <operation name="updateArticle" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://service.aipos.zhuk.by">
+            <actionMapping>urn:updateArticle</actionMapping>
+            <outputActionMapping>urn:updateArticleResponse</outputActionMapping>
+            <faultActionMapping faultName="ArticleServiceIOException">urn:updateArticleArticleServiceIOException</faultActionMapping>
+            <faultActionMapping faultName="ArticleServiceIOException_Exception">urn:updateArticleArticleServiceIOException</faultActionMapping>
+        </operation>
+        <operation name="deleteArticle" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://service.aipos.zhuk.by">
+            <actionMapping>urn:deleteArticle</actionMapping>
+            <outputActionMapping>urn:deleteArticleResponse</outputActionMapping>
+            <faultActionMapping faultName="ArticleServiceIOException">urn:deleteArticleArticleServiceIOException</faultActionMapping>
+            <faultActionMapping faultName="ArticleServiceIOException_Exception">urn:deleteArticleArticleServiceIOException</faultActionMapping>
+        </operation>
+        <operation name="saveArticle" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://service.aipos.zhuk.by">
+            <actionMapping>urn:saveArticle</actionMapping>
+            <outputActionMapping>urn:saveArticleResponse</outputActionMapping>
+            <faultActionMapping faultName="ArticleServiceFileNotFoundException">urn:saveArticleArticleServiceFileNotFoundException</faultActionMapping>
+            <faultActionMapping faultName="ArticleServiceFileNotFoundException_Exception">urn:saveArticleArticleServiceFileNotFoundException</faultActionMapping>
+        </operation>
+    </service>
+</serviceGroup>
