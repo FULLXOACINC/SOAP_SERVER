@@ -36,7 +36,7 @@ public class UpdateArticle implements org.apache.axis2.databinding.ADBBean {
      * Auto generated getter method
      * @return by.zhuk.aipos.model.xsd.Article
      */
-    public by.zhuk.aipos.model.xsd.Article getArticleThrift() {
+    public by.zhuk.aipos.model.xsd.Article getArticle() {
         return localArticleThrift;
     }
 

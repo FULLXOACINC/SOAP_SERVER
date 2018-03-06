@@ -2,6 +2,7 @@
 <project basedir="." default="jar.server">
     <!--Auto generated ant build file-->
     <property environment="env"/>
+    <property name="services" value="/home/alex/workspace/apache-tomcat-8.5.6/webapps/axis2/WEB-INF/services"/>
     <property name="env.AXIS2_HOME" value="/home/alex/workspace/axis2-1.7.7"/>
     <property name="axis2.home" value="${env.AXIS2_HOME}"/>
     <property name="project.base.dir" value="."/>
@@ -66,6 +67,7 @@
         <jar destfile="${lib}/${name}.aar">
             <fileset excludes="**/Test.class" dir="${classes}"/>
         </jar>
+        <copy file="${build}/lib/${name}.aar" toDir="${services}"/>
     </target>
     <target if="jars.ok" name="jar.client" depends="compile.src">
         <jar destfile="${lib}/${name}-test-client.jar">

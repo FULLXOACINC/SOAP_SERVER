@@ -16,12 +16,11 @@ import java.util.List;
 public class ArticleService {
     private final static String PATH = "articles/";
 
-    public void saveArticle(Article article) {
+    public void saveArticle(Article article) throws FileNotFoundException {
         File file = new File(PATH + article.getName());
         boolean isCreate = file.mkdir();
         if (!isCreate) {
-            articleServer.log("Can't save article " + articleThrift);
-            return;
+            throw new FileNotFoundException();
         }
         try (PrintWriter outIntro = new PrintWriter(PATH + article.getName() + "/intro");
              PrintWriter outBody = new PrintWriter(PATH + article.getName() + "/body");
@@ -29,48 +28,36 @@ public class ArticleService {
             outIntro.println(article.getInto());
             outBody.println(article.getBody());
             outExamples.println(article.getCodeExample());
-        } catch (FileNotFoundException e) {
-            articleServer.log("ERROR " + e.getMessage());
-            throw new TException(e);
         }
-        articleServer.log("Save " + articleThrift);
     }
 
-    public ArticleThrift getArticle(String name) throws TException {
-        ArticleThrift articleThrift = new ArticleThrift();
+    public Article getArticle(String name) throws IOException {
+        Article article = new Article();
         String intro;
         String body;
         String codeExample;
-        try {
-            intro = readFile(PATH + name + "/intro");
-            body = readFile(PATH + name + "/body");
-            codeExample = readFile(PATH + name + "/examples");
-        } catch (IOException e) {
-            articleServer.log("ERROR " + e.getMessage());
-            throw new TException(e);
-        }
-        articleThrift.setName(name);
-        articleThrift.setInto(intro);
-        articleThrift.setBody(body);
-        articleThrift.setCodeExample(codeExample);
+        intro = readFile(PATH + name + "/intro");
+        body = readFile(PATH + name + "/body");
+        codeExample = readFile(PATH + name + "/examples");
+
+        article.setName(name);
+        article.setInto(intro);
+        article.setBody(body);
+        article.setCodeExample(codeExample);
 
 
-        return articleThrift;
+        return article;
     }
 
 
-    public void deleteArticle(String name) throws TException {
+    public void deleteArticle(String name) throws IOException {
         File directory = new File(PATH + name);
-        try {
-            FileUtils.deleteDirectory(directory);
-        } catch (IOException e) {
-            throw new TException(e);
-        }
-        articleServer.log("Delete " + name);
+        FileUtils.deleteDirectory(directory);
+
     }
 
 
-    public void updateArticle(Article article){
+    public void updateArticle(Article article) throws IOException {
         deleteArticle(article.getName());
         saveArticle(article);
     }
